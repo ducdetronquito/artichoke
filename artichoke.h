@@ -2,8 +2,8 @@
 #define ARTICHOKE_H
 
 // Builtin dependencies
+#include <ctype.h>   // isspace
 #include <stdbool.h> // bool
-
 // External dependecies
 #include <myhtml/myhtml.h> // myhtml_node_text, myhtml_tag_name_by_id
 #include <myhtml/tag.h>
@@ -19,8 +19,21 @@ typedef struct {
     myhtml_tree_node_t *checkpoints[10];
 } context_t;
 
+typedef struct {
+    myhtml_tree_node_t *node;
+    int word_count;
+    int hyperlink_words_count;
+    int inner_text_block_count;
+} text_block_t;
 
-void artichoke_clean(myhtml_tree_t* tree);
-bool artichoke_get_next_node(myhtml_tree_node_t *node, context_t *context);
+typedef struct {
+    int length;
+    text_block_t items[100];
+} text_block_collection_t;
 
+void artichoke_clean(myhtml_tree_t *tree);
+bool artichoke_get_next_node(myhtml_tree_node_t **node, context_t *context);
+void artichoke_get_text_blocks(myhtml_tree_node_t *root_node, text_block_collection_t *collection);
+bool artichoke_is_text_block(long int tag_id);
+int artichoke_count_words(const char *string);
 #endif // ARTICHOKE_H
