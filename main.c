@@ -17,10 +17,14 @@ int main(int argc, const char *argv[]) {
                          "<meta name=\"author\" content=\"ducdetronquito\">"
                          "</head>"
                          "<body>"
+                         "<article>"
                          "<div>"
-                         "<p>Hello   Hyper\n <a href=\"#\">Link</a></p>"
+			 "<p>Hello   Hyper\n <a href=\"#\">Link</a></p>"
                          "<p>Have\t a great  day!</p>"
-                         "</div>"
+			 "</div>"
+                         "</article>"
+			 "The lol is <a href=\"#\">here</a>"
+			 "</article>"
                          "</body>"
                          "</html>");
 
@@ -29,9 +33,8 @@ int main(int argc, const char *argv[]) {
 
     // Clean DOM.
     artichoke_clean(tree);
-
     myhtml_tree_destroy(tree);
     myhtml_destroy(myhtml);
-
+    
     return 0;
 }

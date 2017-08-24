@@ -16,14 +16,16 @@
 // It will be improved soon.
 typedef struct {
     int head;
+    int checkpoint_depths[10];
     myhtml_tree_node_t *checkpoints[10];
 } context_t;
 
 typedef struct {
     myhtml_tree_node_t *node;
     int word_count;
-    int hyperlink_words_count;
-    int inner_text_block_count;
+    int hyperlinks_word_count;
+    int depth;
+    
 } text_block_t;
 
 typedef struct {
