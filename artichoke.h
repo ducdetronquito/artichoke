@@ -38,4 +38,5 @@ bool artichoke_get_next_node(myhtml_tree_node_t **node, context_t *context);
 void artichoke_get_text_blocks(myhtml_tree_node_t *root_node, text_block_collection_t *collection);
 bool artichoke_is_text_block(long int tag_id);
 int artichoke_count_words(const char *string);
+bool artichoke_is_boilerplate(text_block_t* text_block);
 #endif // ARTICHOKE_H

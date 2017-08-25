@@ -147,7 +147,15 @@ void artichoke_get_text_blocks(myhtml_tree_node_t *node, text_block_collection_t
 	    hyperlinks_word_count_by_depth[current_block->depth] += current_block->hyperlinks_word_count;
 	}
         previous_depth = current_block->depth;
-    }   
+    }
+
+
+    for (int i = 0; i < collection->length; i++) {
+	
+        if (artichoke_is_boilerplate(&(collection->items[i]))) {
+	    myhtml_node_delete_recursive(collection->items[i].node);
+	}
+    }
 
 }
 
@@ -200,3 +208,13 @@ int artichoke_count_words(const char *string) {
     }
     return word_count;
 }
+
+
+bool artichoke_is_boilerplate(text_block_t *text_block) {
+    
+}
+
+
+
+
+
